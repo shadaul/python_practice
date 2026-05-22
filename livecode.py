@@ -1,0 +1,68 @@
+# users = [
+#     {"name": "Alice", "department": "Data"},
+#     {"name": "Bob", "department": "Backend"},
+#     {"name": "Charlie", "department": "Data"},
+#     {"name": "David", "department": "Frontend"},
+#     {"name": "Eve", "department": "Backend"}
+# ]
+
+# result = {}
+
+# for user in users:
+#     dept = user["department"]
+#     name = user["name"]
+#     if dept not in result:
+#         result[dept] = []
+#     result[dept].append(name)
+
+# print(result)
+
+# def is_valid(s):
+#     stack = []
+#     pairs = {')': '(', ']': '[', '}': '{'}
+
+#     for char in s:
+#         if char not in pairs:
+#             stack.append(char)
+#         else:
+#             if not stack:
+#                 return False
+#             last = stack.pop()
+#             if last != pairs[char]:
+#                 return False
+#             pass
+
+#     return len(stack) == 0
+
+# print(is_valid("()[]{}"))
+# print(is_valid("([)]"))
+
+# def fir_un(s):
+#     col = {}
+#     for item in s:
+#         if item not in col:
+#             col[item] = 1
+#         else:
+#             col[item] += 1
+#     for index, element in enumerate(s):
+#         if col[element] == 1:
+#             return index
+        
+#     return -1
+        
+
+# print(fir_un("leetcode"))     
+# print(fir_un("loveleetcode")) 
+# print(fir_un("aabb"))
+
+def twonum(nums, target):
+    seen = {}
+    for index, num in enumerate(nums):
+        
+        diff = target - num
+        if diff in seen:
+            return [seen[diff], index]
+        else:
+            seen[num] = index
+
+print(twonum([2, 7, 11, 15], 9))
