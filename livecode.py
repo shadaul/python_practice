@@ -55,14 +55,32 @@
 # print(fir_un("loveleetcode")) 
 # print(fir_un("aabb"))
 
-def twonum(nums, target):
-    seen = {}
-    for index, num in enumerate(nums):
+# def twonum(nums, target):
+#     seen = {}
+#     for index, num in enumerate(nums):
         
-        diff = target - num
-        if diff in seen:
-            return [seen[diff], index]
-        else:
-            seen[num] = index
+#         diff = target - num
+#         if diff in seen:
+#             return [seen[diff], index]
+#         else:
+#             seen[num] = index
 
-print(twonum([2, 7, 11, 15], 9))
+# print(twonum([2, 7, 11, 15], 9))
+
+def maxProfit(prices):
+    if not prices:
+        return 0
+    min_price = prices[0]
+    max_profit = 0
+
+    for price in prices:
+        if price < min_price:
+            min_price = price
+        else:
+            current_price = price - min_price
+            if current_price > max_profit:
+                max_profit = current_price
+        
+    return max_profit
+
+print(maxProfit([7, 1, 5, 3, 6, 4]))
