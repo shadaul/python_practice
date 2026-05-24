@@ -67,20 +67,34 @@
 
 # print(twonum([2, 7, 11, 15], 9))
 
-def maxProfit(prices):
-    if not prices:
-        return 0
-    min_price = prices[0]
-    max_profit = 0
+# def maxProfit(prices):
+#     if not prices:
+#         return 0
+#     min_price = prices[0]
+#     max_profit = 0
 
-    for price in prices:
-        if price < min_price:
-            min_price = price
-        else:
-            current_price = price - min_price
-            if current_price > max_profit:
-                max_profit = current_price
+#     for price in prices:
+#         if price < min_price:
+#             min_price = price
+#         else:
+#             current_price = price - min_price
+#             if current_price > max_profit:
+#                 max_profit = current_price
         
-    return max_profit
+#     return max_profit
 
-print(maxProfit([7, 1, 5, 3, 6, 4]))
+# print(maxProfit([7, 1, 5, 3, 6, 4]))
+
+def zero_last(nums):
+    insert_pos = 0
+    for num in nums:
+        if num != 0:
+            nums[insert_pos] = num
+            insert_pos += 1
+    while insert_pos < len(nums):
+        nums[insert_pos] = 0
+        insert_pos += 1
+
+    return nums
+
+print(zero_last([0, 1, 0, 3, 12]))
