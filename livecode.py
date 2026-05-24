@@ -85,16 +85,30 @@
 
 # print(maxProfit([7, 1, 5, 3, 6, 4]))
 
-def zero_last(nums):
-    insert_pos = 0
-    for num in nums:
-        if num != 0:
-            nums[insert_pos] = num
-            insert_pos += 1
-    while insert_pos < len(nums):
-        nums[insert_pos] = 0
-        insert_pos += 1
+# def zero_last(nums):
+#     insert_pos = 0
+#     for num in nums:
+#         if num != 0:
+#             nums[insert_pos] = num
+#             insert_pos += 1
+#     while insert_pos < len(nums):
+#         nums[insert_pos] = 0
+#         insert_pos += 1
 
-    return nums
+#     return nums
 
-print(zero_last([0, 1, 0, 3, 12]))
+# print(zero_last([0, 1, 0, 3, 12]))
+
+def intersection(nums1, nums2):
+    set1 = set(nums1)
+    set2 = set(nums2)
+    result = []
+
+    for num in set1:
+        if num in set2:
+            result.append(num)
+
+    return result
+
+print(intersection([1, 2, 2, 1], [2, 2]))
+print(intersection([4, 9, 5], [9, 4, 9, 8, 4]))
