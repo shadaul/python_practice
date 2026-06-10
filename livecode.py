@@ -113,8 +113,29 @@
 # print(intersection([1, 2, 2, 1], [2, 2]))
 # print(intersection([4, 9, 5], [9, 4, 9, 8, 4]))
 
-def find_uniq(nums):
-    uniq = set(nums)
-    result = sum(uniq) * 2 - sum(nums)
-    return result
+# def find_uniq(nums):
+#     uniq = set(nums)
+#     result = sum(uniq) * 2 - sum(nums)
+#     return result
 
+# matches = [
+#     {"match_id": 101, "player": "Daulet", "hero": "Invoker", "stats": {"kills": 12, "deaths": 3}, "won": True},
+#     {"match_id": 102, "player": "Karim", "hero": "Axe", "stats": {"kills": 8, "deaths": 5}, "won": False},
+#     {"match_id": 103, "player": "Daulet", "hero": "Shadow Fiend", "stats": {"kills": 15, "deaths": 2}, "won": True},
+#     {"match_id": 104, "player": "Roman", "hero": "Crystal Maiden", "stats": {"kills": 2, "deaths": 10}, "won": True},
+#     {"match_id": 105, "player": "Daulet", "hero": "Invoker", "stats": {"kills": 5, "deaths": 6}, "won": False}
+# ]
+
+
+# def total_kills():
+#     total = {}
+#     for i in matches:
+#         name = i["player"]
+#         kills = i["stats"]["kills"]
+#         if not i["won"]:
+#             continue
+#         if name not in total:
+#             total[name] = kills
+#         else:
+#             total[name] += kills
+#     return total
