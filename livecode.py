@@ -139,3 +139,50 @@
 #         else:
 #             total[name] += kills
 #     return total
+
+# raw_transactions = [
+#     {"transaction_id": "T001", "user": "Karim", "price": 100, "quantity": 2},
+#     {"transaction_id": "T002", "user": "Roman", "price": 250, "quantity": 1},
+#     {"transaction_id": "T001", "user": "Karim", "price": 100, "quantity": 2}, # Полный дубликат!
+#     {"transaction_id": "T003", "user": "Daulet", "price": -50, "quantity": 1}, # Отрицательная цена!
+#     {"transaction_id": "T004", "user": "Roman", "price": 300, "quantity": 0}, # Нулевое количество!
+#     {"transaction_id": "T005", "user": "Karim", "price": None, "quantity": 2}, # Нет цены!
+#     {"transaction_id": "T006", "user": "Daulet", "price": 400, "quantity": 1}
+# ]
+
+# def clean_data(transactions):
+#     clean_data = []
+#     seen = set()
+#     for i in transactions:
+#         price = i["price"]
+#         quantity = i["quantity"]
+#         id = i["transaction_id"]
+#         if (price is None or price <= 0) or (quantity is None or quantity <= 0):
+#             continue
+#         if id in seen:
+#             continue
+
+#         seen.add(id)
+#         clean_data.append(i)
+#     return clean_data
+
+silver_transactions = [
+    {"transaction_id": "T001", "user": "Karim", "price": 100, "quantity": 2},
+    {"transaction_id": "T002", "user": "Roman", "price": 250, "quantity": 1},
+    {"transaction_id": "T006", "user": "Daulet", "price": 400, "quantity": 1},
+    {"transaction_id": "T007", "user": "Karim", "price": 50, "quantity": 4}
+]
+
+def calculate_gmv(transactions):
+    final = {}
+    for i in transactions:
+        price = i["price"]
+        quantity = i["quantity"]
+        user = i["user"]
+        col = price * quantity
+        if user not in final:
+            final[user] = col
+        else:
+            final[user] += col
+
+    return final
