@@ -166,23 +166,42 @@
 #         clean_data.append(i)
 #     return clean_data
 
-silver_transactions = [
-    {"transaction_id": "T001", "user": "Karim", "price": 100, "quantity": 2},
-    {"transaction_id": "T002", "user": "Roman", "price": 250, "quantity": 1},
-    {"transaction_id": "T006", "user": "Daulet", "price": 400, "quantity": 1},
-    {"transaction_id": "T007", "user": "Karim", "price": 50, "quantity": 4}
+# silver_transactions = [
+#     {"transaction_id": "T001", "user": "Karim", "price": 100, "quantity": 2},
+#     {"transaction_id": "T002", "user": "Roman", "price": 250, "quantity": 1},
+#     {"transaction_id": "T006", "user": "Daulet", "price": 400, "quantity": 1},
+#     {"transaction_id": "T007", "user": "Karim", "price": 50, "quantity": 4}
+# ]
+
+# def calculate_gmv(transactions):
+#     final = {}
+#     for i in transactions:
+#         price = i["price"]
+#         quantity = i["quantity"]
+#         user = i["user"]
+#         col = price * quantity
+#         if user not in final:
+#             final[user] = col
+#         else:
+#             final[user] += col
+
+#     return final
+
+users = [
+    {"user_id": 1, "name": "Daulet", "country": "PL"},
+    {"user_id": 2, "name": "Karim", "country": "KZ"},
+    {"user_id": 3, "name": "Roman", "country": "PL"}
 ]
 
-def calculate_gmv(transactions):
-    final = {}
-    for i in transactions:
-        price = i["price"]
-        quantity = i["quantity"]
-        user = i["user"]
-        col = price * quantity
-        if user not in final:
-            final[user] = col
-        else:
-            final[user] += col
+transactions = [
+    {"txn_id": "T1", "user_id": 1, "amount": 500},
+    {"txn_id": "T2", "user_id": 2, "amount": 200},
+    {"txn_id": "T3", "user_id": 1, "amount": 100}
+]
 
-    return final
+for user in users:
+    user1 = user["user_id"]
+    name = user["name"]
+    users[user1] = name
+
+print(users)
