@@ -199,9 +199,17 @@ transactions = [
     {"txn_id": "T3", "user_id": 1, "amount": 100}
 ]
 
-for user in users:
-    user1 = user["user_id"]
-    name = user["name"]
-    users[user1] = name
 
-print(users)
+def enrich_transactions(users, transactions):
+    new = {}
+    for user in users:
+        us = user["user_id"]
+        name = user["name"]
+        new[us] = name
+
+    for transaction in transactions:
+        cur_id = transaction["user_id"]
+        transaction["name"] = new[cur_id]
+
+    return transactions
+
