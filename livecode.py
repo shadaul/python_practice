@@ -187,29 +187,46 @@
 
 #     return final
 
-users = [
-    {"user_id": 1, "name": "Daulet", "country": "PL"},
-    {"user_id": 2, "name": "Karim", "country": "KZ"},
-    {"user_id": 3, "name": "Roman", "country": "PL"}
-]
+# users = [
+#     {"user_id": 1, "name": "Daulet", "country": "PL"},
+#     {"user_id": 2, "name": "Karim", "country": "KZ"},
+#     {"user_id": 3, "name": "Roman", "country": "PL"}
+# ]
 
-transactions = [
-    {"txn_id": "T1", "user_id": 1, "amount": 500},
-    {"txn_id": "T2", "user_id": 2, "amount": 200},
-    {"txn_id": "T3", "user_id": 1, "amount": 100}
-]
+# transactions = [
+#     {"txn_id": "T1", "user_id": 1, "amount": 500},
+#     {"txn_id": "T2", "user_id": 2, "amount": 200},
+#     {"txn_id": "T3", "user_id": 1, "amount": 100}
+# ]
 
 
-def enrich_transactions(users, transactions):
-    new = {}
-    for user in users:
-        us = user["user_id"]
-        name = user["name"]
-        new[us] = name
+# def enrich_transactions(users, transactions):
+#     new = {}
+#     for user in users:
+#         us = user["user_id"]
+#         name = user["name"]
+#         new[us] = name
 
-    for transaction in transactions:
-        cur_id = transaction["user_id"]
-        transaction["name"] = new[cur_id]
+#     for transaction in transactions:
+#         cur_id = transaction["user_id"]
+#         transaction["name"] = new[cur_id]
 
-    return transactions
+#     return transactions
 
+
+
+import datetime
+
+def log_pipeline_run():
+    # Получаем текущее время
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_message = f"[{now}] System check: Medallion architecture ready.\n"
+    
+    # Дописываем лог в текстовый файл
+    with open("system_logs.txt", "a", encoding="utf-8") as file:
+        file.write(log_message)
+        
+    print(f"Log saved: {log_message.strip()}")
+
+if __name__ == "__main__":
+    log_pipeline_run()
