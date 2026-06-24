@@ -215,18 +215,25 @@
 
 
 
-import datetime
+# import datetime
 
-def log_pipeline_run():
-    # Получаем текущее время
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    log_message = f"[{now}] System check: Medallion architecture ready.\n"
+# def log_pipeline_run():
+#     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+#     log_message = f"[{now}] System check: Medallion architecture ready.\n"
     
-    # Дописываем лог в текстовый файл
-    with open("system_logs.txt", "a", encoding="utf-8") as file:
-        file.write(log_message)
+#     with open("system_logs.txt", "a", encoding="utf-8") as file:
+#         file.write(log_message)
         
-    print(f"Log saved: {log_message.strip()}")
+#     print(f"Log saved: {log_message.strip()}")
 
-if __name__ == "__main__":
-    log_pipeline_run()
+# if __name__ == "__main__":
+#     log_pipeline_run()
+
+def two_sum(nums, target):
+    seen = {}
+    for index, num in enumerate(nums):
+        desire = target - num
+        if desire not in seen:
+            seen[num] = index
+        else:
+            return [seen[desire], index]
