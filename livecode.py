@@ -229,11 +229,31 @@
 # if __name__ == "__main__":
 #     log_pipeline_run()
 
-def two_sum(nums, target):
-    seen = {}
-    for index, num in enumerate(nums):
-        desire = target - num
-        if desire not in seen:
-            seen[num] = index
-        else:
-            return [seen[desire], index]
+# def two_sum(nums, target):
+#     seen = {}
+#     for index, num in enumerate(nums):
+#         desire = target - num
+#         if desire not in seen:
+#             seen[num] = index
+#         else:
+#             return [seen[desire], index]
+        
+# import pandas as pd
+
+# active_users = df[df['action_type'] == 'apply'].groupby('user_id').size().loc[lambda x: x > 5].index.tolist()
+
+
+# text = "Python, SQL! python, pandas? sql"
+# fin = text.lower().replace(',', '').replace('!', '').replace('?', '')
+# clean = set(fin.split())
+
+# import pandas as pd
+
+# data = {
+#     'user_id': [1, 2, 3, 4],
+#     'profession': ['Data Scientist', 'Data Engineer', 'Data Scientist', 'Data Analyst'],
+#     'expected_salary': [3000, 3500, 4000, 2000]
+# }
+# df = pd.DataFrame(data)
+
+# group = df.groupby('profession')['expected_salary'].mean()

@@ -17,3 +17,14 @@
 -- GROUP BY users.user_id, users.name
 -- having total_spent > 1000
 
+with RankedApplications AS (
+    SELECT  
+        user_id,
+        vacancy_id,
+        ROW NUMBER() OVER(PARTITION BY user_id ORDER BY created_at DESC) as rn
+    FROM applications
+)
+
+SELECT user_id, vacancy_id
+FROM RankedApplications
+where rn = 1;
