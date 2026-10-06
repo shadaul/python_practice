@@ -29,5 +29,6 @@
 
 #     return approv
 
-def clean_names(names):
-    return [name.strip().capitalize() for name in names ]
+# def clean_names(names):
+#     return [name.strip().capitalize() for name in names ]
+
