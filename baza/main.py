@@ -32,3 +32,18 @@
 # def clean_names(names):
 #     return [name.strip().capitalize() for name in names ]
 
+raw_api_response = [
+    {"transaction_id": "TX1001", "user_id": 42, "amount": "150.50", "status": "completed"},
+    {"transaction_id": "TX1002", "user_id": 15, "amount": None, "status": "failed"},
+    {"transaction_id": "TX1003", "user_id": 42, "amount": "89.90", "status": "completed"},
+    {"transaction_id": "TX1004", "user_id": 88, "amount": "200.00", "status": "pending"},
+]
+
+def clean_transactions(data):
+    result = {}
+    for tr in data:
+        user_id = tr["user_id"]
+        amount = tr['amount']
+        if tr["status"] == 'completed' and tr["amount"] is not None:
+            result[user_id] = result.get(user_id, 0.0) + float(amount)
+    return result
