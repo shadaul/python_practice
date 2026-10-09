@@ -48,12 +48,33 @@
 #             result[user_id] = result.get(user_id, 0.0) + float(amount)
 #     return result
 
-from pyspark.sql import functions as F
+# from pyspark.sql import functions as F
 
-result_df = (
-    sales_df
-    .filter(F.col("status") == "completed")
-    .withColumn("amount_vat", F.col("amount") * 1.2)
-    .groupBy("client_id")
-    .agg(F.sum("amount_vat").alias("total_spent"))
-)
+# result_df = (
+#     sales_df
+#     .filter(F.col("status") == "completed")
+#     .withColumn("amount_vat", F.col("amount") * 1.2)
+#     .groupBy("client_id")
+#     .agg(F.sum("amount_vat").alias("total_spent"))
+# )
+
+transactions = [
+    {"user_id": 101, "type": "deposit", "amount": 500},
+    {"user_id": 102, "type": "deposit", "amount": 200},
+    {"user_id": 101, "type": "withdrawal", "amount": 150},
+    {"user_id": 103, "type": "deposit", "amount": 1000},
+    {"user_id": 101, "type": "deposit", "amount": 300},
+    {"user_id": 102, "type": "withdrawal", "amount": 50},
+]
+
+def calculate_balances(transactions):
+    result = {}
+    for transaction in transactions:
+        type = transaction["type"]
+        user_id = transaction["user_id"]
+        amount = transaction["amount"]
+        if type == 'deposit':
+            result[user_id] = result.get(user_id, 0) + amount
+        elif:
+            result[user_id] = result.get(user_id, 0) - amount
+    return result 
